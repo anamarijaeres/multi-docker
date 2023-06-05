@@ -1,11 +1,10 @@
 version: "3"
 services:
   client:
-    image: "cygnetops/multi-client-10-14"
-    mem_limit: 128m
+    image: 'rallycoding/multi-client'
     hostname: client
   server:
-    image: "cygnetops/multi-server-10-14"
+    image: 'anamarijaeres/multi-server'
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +16,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "cygnetops/multi-worker-10-14"
+    image: 'anamarijaeres/multi-worker'
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "cygnetops/multi-nginx-10-14"
+    image: 'anamarijaeres/multi-nginx'
     mem_limit: 128m
     hostname: nginx
     ports:
